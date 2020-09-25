@@ -20,11 +20,11 @@ func main() {
 }
 
 func send(c chan<- int) {
+	defer wg.Done()
 	c <- 10
-	wg.Done()
 }
 
 func receive(c <-chan int) {
+	defer wg.Done()
 	fmt.Println(<-c)
-	wg.Done()
 }
